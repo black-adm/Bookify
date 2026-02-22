@@ -1,10 +1,5 @@
-﻿using Bookify.Domain.Abstractions.
+﻿using Bookify.Domain.Abstractions.Interfaces;
 
-rfaces;
+namespace Bookify.Domain.Bookings.Events;
 
-namespace Bookify.Domain.Booki
-
-Events;
-
-public record BookingRejectedDomainEvent(Guid BookingId) : ID
-ainEvent;
+public record BookingRejectedDomainEvent(Guid BookingId) : IDomainEvent;
