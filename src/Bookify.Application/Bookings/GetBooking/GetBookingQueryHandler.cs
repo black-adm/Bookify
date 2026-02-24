@@ -1,6 +1,6 @@
-﻿using Bookify.Application.Abstractions.Data;
-using Bookify.Application.Abstractions.Data.Queries;
-using Bookify.Application.Abstractions.Messaging;
+﻿using Bookify.Application.Abstractions.Messaging;
+using Bookify.Application.Abstractions.Persistence;
+using Bookify.Application.Abstractions.Persistence.Queries;
 using Bookify.Domain.Abstractions;
 using Dapper;
 

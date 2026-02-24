@@ -1,4 +1,4 @@
-﻿namespace Bookify.Application.Abstractions.Data.Queries;
+﻿namespace Bookify.Application.Abstractions.Persistence.Queries;
 
 internal sealed class BookingSqlQueries
 {
