@@ -1,4 +1,6 @@
-﻿using Bookify.Domain.Bookings;
+﻿using Bookify.Application.Behaviors;
+using Bookify.Domain.Bookings;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookify.Application;
@@ -10,7 +12,14 @@ public static class DependencyInjection
         services.AddMediatR(configuration =>
         {
             configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
+
+            configuration.AddBehavior(typeof(LoggingBehavior<,>));
+
+            configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
+
+        services.AddValidatorsFromAssemblies(
+            (IEnumerable<System.Reflection.Assembly>)typeof(DependencyInjection).Assembly);
 
         services.AddTransient<PricingService>();
 
