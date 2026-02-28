@@ -1,11 +1,14 @@
-﻿using Bookify.Application.Exceptions;
+﻿using Bookify.Application.Abstractions.Messaging;
+using Bookify.Application.Exceptions;
 using FluentValidation;
 using MediatR;
 
 namespace Bookify.Application.Behaviors;
 
-public class ValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
+internal sealed class ValidationBehavior<TRequest, TResponse>(
+    IEnumerable<IValidator<TRequest>> validators)
     : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : IBaseCommand
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators = validators;
 

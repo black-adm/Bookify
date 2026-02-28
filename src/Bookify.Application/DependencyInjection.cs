@@ -13,13 +13,14 @@ public static class DependencyInjection
         {
             configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
 
-            configuration.AddBehavior(typeof(LoggingBehavior<,>));
+            configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
 
             configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
 
-        services.AddValidatorsFromAssemblies(
-            (IEnumerable<System.Reflection.Assembly>)typeof(DependencyInjection).Assembly);
+        services.AddValidatorsFromAssembly(
+            typeof(DependencyInjection).Assembly,
+            includeInternalTypes: true);
 
         services.AddTransient<PricingService>();
 
